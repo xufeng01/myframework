@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.tutor</groupId>
+    <artifactId>webs</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>web_main</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+ 
+  <build>
+    <finalName>web_main</finalName>
+    <plugins>  
+      <!-- 合并多个war -->  
+      <plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-war-plugin</artifactId>  
+        <configuration>  
+          <packagingExcludes>WEB-INF/web.xml</packagingExcludes>	
+          <overlays>  
+            <overlay>  
+              <groupId>com.tutor</groupId>  
+              <artifactId>web_demo</artifactId>  
+            </overlay>   
+          </overlays>  
+        </configuration>  
+      </plugin>  
+    </plugins> 
+  </build>
+  
+  <dependencies>
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>platforms</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<type>pom</type>
+	</dependency>
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>module_demo</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</dependency>
+     <dependency>
+    	<groupId>${project.groupId}</groupId>
+    	<artifactId>web_demo</artifactId>
+    	<version>1.0.0-SNAPSHOT</version>
+    	<type>war</type>
+ 	</dependency>	
+  </dependencies>
+  
+</project>
